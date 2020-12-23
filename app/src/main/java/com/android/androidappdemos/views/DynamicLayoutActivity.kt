@@ -40,19 +40,16 @@ class DynamicLayoutActivity : AppCompatActivity(), ItemRequestInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dynamic_layout)
         initRecyclerview()
-        setupItemTouchHelper()
     }
 
     private fun initRecyclerview() {
         foodItemRecyclerView = recyclerview_food_items
-        foodItemList.add(ItemRequestRow(R.id.image_radio_button, EditText(this), Spinner(this)))
+        foodItemList.add(ItemRequestRow(R.id.image_radio_button, EditText(this),
+            Spinner(this)))
         foodItemAdapter = FoodItemAdapter(foodItemList)
         foodItemRecyclerView.adapter = foodItemAdapter
         foodItemRecyclerView.layoutManager = LinearLayoutManager(this)
         ItemTouchHelper(itemTocuhHelperCallback).attachToRecyclerView(foodItemRecyclerView)
-    }
-
-    private fun setupItemTouchHelper() {
     }
 
     override fun addFoodItem() {
